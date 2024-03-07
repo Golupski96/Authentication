@@ -1,16 +1,18 @@
 <div class="row mt-5">
     <div class="col-6 offset-3">
-        <form>
+        <form (sumbit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="!isLoading">
             <h1 class="text-center">Login</h1>
             <div class="mb-3">
-              <label for="" class="form-label">Email</label>
-              <input type="email" class="form-control" id="titleInput">
+              <label for="email" class="form-label">Email</label>
+              <input s name="email" ngModel type ="email" class="form-control" id="email" #emailInput="ngModel" required email>
+              <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)" class="text-danger">Please enter a valid email</div>
             </div>
             <div class="mb-3">
-              <label for="" class="form-label">Password</label>
-              <input type="password" class="form-control" id="titleInput">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" name="password" ngModel class="form-control" id="password" #passwordInput="ngModel" required>
+              <div *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)" class="text-danger">Please enter a valid password</div>
             </div>
-            <button type="button" class="btn btn-dark">Submit</button>
+            <button type="button" class="btn btn-dark">Login</button>
         </form>
     </div>
 </div>
